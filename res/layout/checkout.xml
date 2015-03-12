@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:background="#ffffffff"
+  >
+     
+    <LinearLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:background="#ffffffff"
+    >
+		<TextView
+	    	android:layout_width="120dip"
+	   	 	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textStyle="bold"
+	    	android:textColor="#ff000000"
+	    	android:text="@string/list_name"
+	    	android:textSize="22sp" />
+		<TextView
+		    android:id="@+id/carname"
+	    	android:layout_width="wrap_content"
+	   	 	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textColor="#ff000000"
+	    	android:textSize="22sp" />
+    </LinearLayout>
+    <LinearLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:background="#ffffffff"
+    >
+		<TextView
+	    	android:layout_width="120dip"
+	    	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textColor="#ff000000"
+	   	 	android:textStyle="bold"
+	    	android:text="@string/list_datetime"
+	    	android:textSize="22sp" />
+		<TextView
+		    android:id="@+id/datetime"
+	    	android:layout_width="wrap_content"
+	   	 	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textColor="#ff000000"
+	    	android:textSize="22sp" />
+    </LinearLayout>
+    <LinearLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:background="#ffffffff"
+    >
+		<TextView
+	    	android:layout_width="120dip"
+	    	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textColor="#ff000000"
+	   	 	android:textStyle="bold"
+	    	android:text="@string/endtime"
+	    	android:textSize="22sp" />
+		<TextView
+		    android:id="@+id/endtime"
+	    	android:layout_width="wrap_content"
+	   	 	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textColor="#ff000000"
+	    	android:textSize="22sp" />
+    </LinearLayout>
+    <LinearLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:background="#ffffffff"
+    >
+		<TextView
+	    	android:layout_width="120dip"
+	    	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textColor="#ff000000"
+	   	 	android:textStyle="bold"
+	    	android:text="@string/price_standard"
+	    	android:textSize="22sp" />
+		<TextView
+		    android:id="@+id/price"
+	    	android:layout_width="wrap_content"
+	   	 	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textColor="#ff000000"
+	    	android:textSize="22sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent" 
+        android:layout_weight="1" 
+        android:orientation="horizontal"/>
+     <LinearLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="1dip"
+    	android:orientation="horizontal"
+    	android:background="#ffeeeeee"
+    />
+     <LinearLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:background="#ffffffff"
+    >
+		<TextView
+	    	android:layout_width="120dip"
+	    	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textColor="#ff000000"
+	   	 	android:textStyle="bold"
+	    	android:text="@string/price_total"
+	    	android:textSize="22sp" />
+		<TextView
+		    android:id="@+id/totalprice"
+	    	android:layout_width="wrap_content"
+	   	 	android:layout_height="wrap_content"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:gravity="center_vertical|left"
+	    	android:textColor="#ff000000"
+	    	android:textSize="22sp" />
+    </LinearLayout>
+    <LinearLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:background="#ffffffff"
+    >
+		<Button
+		    android:id="@+id/checkout"
+	    	android:layout_width="match_parent"
+	    	android:layout_height="40dip"
+	    	android:layout_marginLeft="30dip"
+	    	android:layout_marginRight="30dip"
+	    	android:layout_marginTop="10dip"
+	    	android:layout_marginBottom="10dip"
+	    	android:gravity="center_vertical|center_horizontal"
+	    	android:textColor="#ff000000"
+	   	 	android:textStyle="bold"
+	    	android:text="@string/checkout"
+	    	android:background="#ffc7102d"
+	    	android:textSize="24sp" />
+    </LinearLayout>
+    
+</LinearLayout>

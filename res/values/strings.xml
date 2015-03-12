@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CarParking</string>
+    <string name="login_namehit">请输入用户</string>
+    <string name="login_passwdhit">请输入密码</string>
+    <string name="list_name">车牌号</string>
+    <string name="list_datetime">停车时间</string>
+    <string name="list_count">当前车辆总数:</string>
+    <string name="action_auto">扫描添加</string>
+    <string name="action_manual">手动添加</string>
+    <string name="action_input">请输入车牌号</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="checkout">支付</string>
+    <string name="delete">删除</string>
+    <string name="endtime">离开时间</string>
+    <string name="timelong">总计时长</string>
+    <string name="price_standard">计费标准</string>
+    <string name="price_total">总计费用</string>
+    <string name="price_item">元/次</string>
+    <string name="price_houritem">元/小时</string>
+</resources>
