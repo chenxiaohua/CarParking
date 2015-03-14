@@ -8,6 +8,10 @@
         android:targetSdkVersion="20" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.CAMERA" /> 
+    <uses-feature android:name = "android.hardware.camera" />
+    <uses-feature android:name = "android.hardware.camera.autofocus" />
 
     <application android:label="@string/app_name"
                  android:theme="@android:style/Theme.NoTitleBar"
@@ -29,6 +33,13 @@
         </activity>
         <activity android:name=".view.CheckoutView"
                   android:screenOrientation="portrait"
+                  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.AutoScanCarPlate"
+            android:screenOrientation="portrait"
                   >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

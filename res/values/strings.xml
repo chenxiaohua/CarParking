@@ -19,4 +19,5 @@
     <string name="price_total">总计费用</string>
     <string name="price_item">元/次</string>
     <string name="price_houritem">元/小时</string>
+    <string name="takepicture">请点击屏幕聚焦拍照</string>
 </resources>

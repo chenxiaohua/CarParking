@@ -65,6 +65,9 @@ public class CarListView extends Activity implements View.OnClickListener{
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
         case id.action_auto:
+        	Intent intent = new Intent();
+        	intent.setClassName("com.car.carparking","com.car.carparking.view.AutoScanCarPlate");
+            startActivityForResult(intent, 1);
             break;
         case id.action_manual:
         	showAddEdit();
@@ -119,6 +122,22 @@ public class CarListView extends Activity implements View.OnClickListener{
 		            			break;
 		            		}
 		            	}
+		            	mItemListAdapter.notifyDataSetChanged();
+		            	mCountView.setText(""+ mArrayList.size());
+	            	}
+	            }
+	        } else if (resultCode == RESULT_CANCELED) {
+	            // Handle cancel
+	        }
+	    }else if(requestCode == 1){
+	    	if (resultCode == RESULT_OK) {
+	            if(intent!=null){
+	            	String carname = intent.getStringExtra("name");
+	            	if(carname!=null && !carname.equals("")&&mArrayList!=null){
+	            		Map map = new HashMap<String, Object>();
+                        map.put("name", carname);
+                        map.put("datetime", mDateFormat.format(System.currentTimeMillis()));
+                        mArrayList.add(map);
 		            	mItemListAdapter.notifyDataSetChanged();
 		            	mCountView.setText(""+ mArrayList.size());
 	            	}
