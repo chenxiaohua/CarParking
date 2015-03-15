@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -46,6 +47,9 @@ public class CarListView extends Activity implements View.OnClickListener{
     
     public String[] mItemName;
 	public int mCount;
+	
+	TitleView mTitleView;
+	ImageView mMenu;
 	
 	
 
@@ -81,6 +85,10 @@ public class CarListView extends Activity implements View.OnClickListener{
         setContentView(R.layout.itemview);
         mItemList = (ListView)findViewById(R.id.listview);
         mCountView = (TextView)findViewById(R.id.listcount);
+        mTitleView = (TitleView)findViewById(R.id.title_view);
+        mMenu = (ImageView)mTitleView.findViewById(R.id.menu);
+        mMenu.setOnClickListener(this);
+        
         initListView();
         initListDate();
     }
@@ -208,7 +216,9 @@ public class CarListView extends Activity implements View.OnClickListener{
     }
     @Override
 	public void onClick(View view) {
-       //
+    	if(view==mMenu){
+			 openOptionsMenu();
+		 }
 	}
 
     @Override
@@ -236,5 +246,22 @@ public class CarListView extends Activity implements View.OnClickListener{
         super.onNewIntent(intent);
         setIntent(intent);
         initView();
+    }
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this).setTitle(R.string.dialog_quit)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    	CarListView.this.finish();
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //
+                    }
+                }).show();
     }
 }

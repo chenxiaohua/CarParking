@@ -33,7 +33,8 @@ public class Login extends Activity implements View.OnClickListener{
         mUserText = (EditText)findViewById(R.id.username);
         mPwdText = (EditText)findViewById(R.id.password);
         mTitleView = (TitleView)findViewById(R.id.titleview);
-        mTitleView.setTitle(R.string.app_name);
+        mTitleView.setTitle(R.string.app_name); 
+        mTitleView.setMenuVisible(View.GONE);
     }
     
     @Override

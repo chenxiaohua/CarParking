@@ -3,8 +3,11 @@ package com.car.carparking.view;
 import com.car.carparking.R;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +18,7 @@ public class TitleView extends RelativeLayout implements View.OnClickListener{
 	private Context mContext;
 	private View mView;
 	private TextView mTitle;
+	private ImageView mMenu;
     private OnClickListener mListener;
 	
 	public TitleView( Context context, AttributeSet attrs )	{
@@ -28,6 +32,27 @@ public class TitleView extends RelativeLayout implements View.OnClickListener{
 	@Override
 	protected void onFinishInflate(){
 		mTitle =(TextView)mView.findViewById(R.id.title);
+		mMenu = (ImageView)mView.findViewById(R.id.menu);
+	}
+	public void setMenuVisible(int visible){
+		if(mMenu!=null){
+			mMenu.setVisibility(visible);
+		}
+	}
+	public void setMenuBackgroundResource(int resid){
+		if(mMenu!=null){
+			mMenu.setBackgroundResource(resid);
+		}
+	}
+	public void setMenuBackground(Drawable drawable){
+		if(mMenu!=null){
+			mMenu.setBackgroundDrawable(drawable);
+		}
+	}
+	public void setMenuBackgroundColor(int color){
+		if(mMenu!=null){
+			mMenu.setBackgroundColor(color);
+		}
 	}
 	public void setTitle(String title){
 		if(mTitle!=null){
@@ -55,7 +80,7 @@ public class TitleView extends RelativeLayout implements View.OnClickListener{
         if (mListener!=null){
             mListener.onClick(v);
         }
-	}
+	}  
 
     public void registerOnClickListener (OnClickListener listener) {
         mListener = listener;

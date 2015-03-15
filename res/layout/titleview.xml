@@ -5,6 +5,15 @@
               android:layout_height="fill_parent"
               android:id="@+id/titleview"
               android:background="#ffffffff">
+              <ImageButton
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:id="@+id/menu"
+                        android:clickable="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentLeft="true"
+                        android:background="@drawable/menu"/>
                <TextView
                   android:id="@+id/title"
                   android:layout_width="wrap_content"
@@ -14,7 +23,8 @@
                   android:gravity="center_vertical"
                   android:textStyle="bold"
                   android:textColor="#ff000000"
-                  android:textSize="24sp" />
+                  android:textSize="24sp"
+                  android:text="@string/title" />
 
 </RelativeLayout>
 
