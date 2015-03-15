@@ -42,13 +42,18 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback, C
     	Display dis = man.getDefaultDisplay();
     	return dis.getWidth();
     }
+    public static int getScreenheight(Context context){
+    	WindowManager man = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+    	Display dis = man.getDefaultDisplay();
+    	return dis.getHeight();
+    }
 	public CameraView( Context context, AttributeSet attrs )	{
 		this( context, attrs, 0 );
 	}
 	public CameraView(Context context, AttributeSet attrs, int defStyle ){
 		super( context, attrs, defStyle ); 
 		LARGEST_WIDTH = getScreenWidth(context);
-		LARGEST_HEIGHT = LARGEST_WIDTH;
+		LARGEST_HEIGHT = getScreenheight(context);;
 		mHolder = getHolder();
 		mHolder.addCallback(this);
 
