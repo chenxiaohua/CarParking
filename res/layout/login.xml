@@ -10,13 +10,44 @@
                   android:layout_height="60dp"
                   android:id="@+id/titleview"/>  
 
-              <ImageView
-                  android:id="@+id/login_image"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_below="@+id/titleview"
-                  android:layout_gravity="center_horizontal"
-                  android:background="@drawable/loginlogo" />
+              <FrameLayout
+        		android:layout_width="fill_parent"
+        		android:layout_height="200dip"
+        		android:id="@+id/viewpager"
+        		android:layout_below="@id/titleview" >
+
+        		<android.support.v4.view.ViewPager
+            		android:id="@+id/vp"
+            		android:layout_width="fill_parent"
+            		android:layout_height="fill_parent" />
+
+        		<LinearLayout
+            		android:layout_width="fill_parent"
+            		android:layout_height="20dip"
+            		android:layout_gravity="bottom"
+            		android:background="#00ffffff"
+            		android:gravity="center"
+             		android:layout_marginTop="3dip"
+            		android:orientation="horizontal" >
+                	<View
+                    	android:id="@+id/v_dot0"
+                    	style="@style/dot_style"
+                    	android:background="@drawable/dot_focused" />
+
+                	<View
+                    	android:id="@+id/v_dot1"
+                    	style="@style/dot_style" />
+                	<View
+                    	android:id="@+id/v_dot2"
+                    	style="@style/dot_style" />
+                	<View
+                    	android:id="@+id/v_dot3"
+                    	style="@style/dot_style" />
+                	<View
+                    	android:id="@+id/v_dot4"
+                    	style="@style/dot_style" />
+        		</LinearLayout>
+    		</FrameLayout>
 
              <EditText
                    android:layout_width="match_parent"
@@ -29,7 +60,7 @@
                    android:clickable="true"
                    android:textColor="#ff000000" 
                    android:textSize="24sp"
-                   android:layout_below="@+id/login_image"
+                   android:layout_below="@+id/viewpager"
                    android:text="car"/>
 
               <EditText
