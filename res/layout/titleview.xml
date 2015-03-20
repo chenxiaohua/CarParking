@@ -4,16 +4,17 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:id="@+id/titleview"
-              android:background="#ffffffff">
+              android:background="@color/background">
               <ImageButton
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:id="@+id/menu"
                         android:clickable="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_alignParentLeft="true"
-                        android:background="@drawable/menu"/>
+                        android:layout_alignParentLeft="false"
+                        android:background="@drawable/menu"
+                        android:visibility="gone"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
                <TextView
                   android:id="@+id/title"
                   android:layout_width="wrap_content"
@@ -22,9 +23,18 @@
                   android:layout_centerVertical="true"
                   android:gravity="center_vertical"
                   android:textStyle="bold"
-                  android:textColor="#ff000000"
+                  android:textColor="@color/text"
                   android:textSize="24sp"
-                  android:text="@string/title" />
+                  android:text="@string/title"
+                       />
+
+    <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:id="@+id/seperator"
+            android:layout_alignParentBottom="true"
+            android:background="@color/divider"
+            />
 
 </RelativeLayout>
 

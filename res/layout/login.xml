@@ -8,7 +8,7 @@
               <com.car.carparking.view.TitleView
                   android:layout_width="fill_parent"
                   android:layout_height="60dp"
-                  android:id="@+id/titleview"/>  
+                  android:id="@+id/titleview"/>
 
               <FrameLayout
         		android:layout_width="fill_parent"
@@ -56,12 +56,12 @@
                    android:singleLine="true"
                    android:layout_marginLeft="30dp"
                    android:layout_marginRight="30dp"
-                   android:layout_marginTop="15dp" 
+                   android:layout_marginTop="15dp"
                    android:clickable="true"
-                   android:textColor="#ff000000" 
+                   android:textColor="@color/text"
                    android:textSize="24sp"
                    android:layout_below="@+id/viewpager"
-                   android:text="car"/>
+                   android:text="admin"/>
 
               <EditText
                    android:layout_width="match_parent"
@@ -72,10 +72,10 @@
                    android:layout_marginRight="30dp"
                    android:clickable="true"
                    android:inputType="textPassword"
-                   android:textColor="#ff000000" 
+                   android:textColor="@color/text"
                    android:textSize="24sp"
                    android:layout_below="@+id/username"
-                   android:text="1111"/>
+                   android:text="admin"/>
 
               <ImageButton
                   android:id="@+id/logimgButton"

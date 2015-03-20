@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CarParking</string>
+    <string name="app_name">停车场</string>
+    <string name="add_accont">添加账户</string>
+    <string name="add_location">添加地点</string>
     <string name="login_namehit">请输入用户</string>
     <string name="login_passwdhit">请输入密码</string>
+    <string name="login_timehit">请输入时间</string>
     <string name="list_name">车牌号</string>
     <string name="list_datetime">停车时间</string>
     <string name="list_count">当前车辆总数:</string>
@@ -19,6 +22,22 @@
     <string name="price_total">总计费用</string>
     <string name="price_item">元/次</string>
     <string name="price_houritem">元/小时</string>
+    <string name="management">管理员</string>
+    <string name="manage_account">账号管理</string>
+    <string name="manage_location">地点管理</string>
+    <string name="manage_park_status">停车场实时监测</string>
+    <string name="manage_clear">清除所有数据</string>
+    <string name="expiration_time">到期时间</string>
+    <string name="account_name">账号:</string>
+    <string name="account_pass">密码:</string>
+    <string name="account_time">时间:</string>
+    <string name="account_add_success">账号添加成功</string>
+    <string name="account_add_fail">账号添加失败</string>
+    <string name="account_add_used">账号已被注册</string>
+    <string name="location_input_hint">请输入地点</string>
+    <string name="location_input_account_hint">请选择账号</string>
+    <string name="display_pass">显示密码</string>
+    <string name="time_year">年</string>
     <string name="takepicture">请点击屏幕聚焦拍照</string>
     <string name="dialog_quit">确定要退出？</string>
     <string name="title">停车收费系统</string>

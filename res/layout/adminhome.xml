@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background">
+
+    <view
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            class="com.car.carparking.view.TitleView"
+            android:id="@+id/titleview"
+            android:layout_gravity="center_horizontal"/>
+
+    <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:columnCount="3"
+            android:rowCount="3">
+
+        <Button
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:text="@string/manage_account"
+                android:id="@+id/btn_manage_account"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="100dp"
+                android:background="#ff16ff2b"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/text"
+                android:layout_row="0"
+                android:layout_column="0"/>
+
+        <Button
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:text="@string/manage_location"
+                android:id="@+id/btn_manage_location"
+                android:textSize="20sp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="100dp"
+                android:background="#ffffef53"
+                android:textColor="@color/text"
+                android:layout_row="0"
+                android:layout_column="1"/>
+
+        <Button
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:text="@string/manage_park_status"
+                android:id="@+id/btn_park_status"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:background="#ff3998ff"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/text"
+                android:layout_row="1"
+                android:layout_column="0"/>
+
+        <Button
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:text="@string/manage_clear"
+                android:id="@+id/btn_clear"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:background="#fff76dff"
+                android:textColor="@color/text"
+                android:textSize="20sp"/>
+
+    </GridLayout>
+</LinearLayout>

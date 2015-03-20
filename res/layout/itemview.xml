@@ -13,7 +13,8 @@
     	android:layout_height="wrap_content"
     	android:orientation="horizontal"
     	android:background="#ffffffff"
-    >
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 	<TextView
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
@@ -21,8 +22,7 @@
 	    android:paddingLeft="30dip"
 	    android:paddingRight="10dip"
 	    android:gravity="center_vertical|center_horizontal"
-	    android:textStyle="bold"
-	    android:textColor="#ff000000"
+        android:textColor="@color/text"
 	    android:text="@string/list_name"
 	    android:textSize="22sp" />
     <LinearLayout
@@ -37,9 +37,8 @@
 	    android:paddingLeft="10dip"
 	    android:paddingRight="50dip"
 	    android:gravity="center_vertical|center_horizontal"
-	    android:textColor="#ff000000"
-	    android:textStyle="bold"
-	    android:text="@string/list_datetime"
+	    android:textColor="@color/text"
+        android:text="@string/list_datetime"
 	    android:textSize="22sp" />
  
     </LinearLayout>
@@ -48,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
        	android:layout_weight="1"
-       	android:divider="#ff20bef9"
+       	android:divider="@color/divider"
         android:dividerHeight="1dip"
         >
     </ListView>
@@ -63,19 +62,18 @@
             android:layout_width="match_parent"  
             android:layout_height="wrap_content"  
             android:orientation="horizontal"  
-            android:gravity="center_vertical"  
-             >  
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
          	<TextView
 	    		android:layout_width="wrap_content"
 	    		android:layout_height="wrap_content"
-	   			android:layout_gravity="center_horizontal"
+	   			android:layout_gravity="center_vertical"
 	    		android:paddingLeft="10dip"
 	    		android:paddingRight="10dip"
 	    		android:gravity="center_vertical|center_horizontal"
-	    		android:textStyle="bold"
-	    		android:textColor="#ff000000"
+                android:textColor="@color/text"
 	    		android:text="@string/list_count"
-	    		android:textSize="24sp" />
+	    		android:textSize="20sp"/>
 			<TextView
 	    		android:id="@+id/listcount"
 	    		android:layout_width="wrap_content"
@@ -83,8 +81,9 @@
 	    		android:paddingLeft="10dip"
 	    		android:paddingRight="10dip"
 	    		android:gravity="center_vertical|center_horizontal"
-	    		android:textColor="#ff000000"
-	    		android:textSize="24sp" />   
+	    		android:textColor="@color/text"
+	    		android:textSize="20sp"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>  
     </LinearLayout>
 

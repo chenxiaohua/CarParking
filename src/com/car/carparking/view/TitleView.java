@@ -5,7 +5,6 @@ import com.car.carparking.R;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -80,7 +79,7 @@ public class TitleView extends RelativeLayout implements View.OnClickListener{
         if (mListener!=null){
             mListener.onClick(v);
         }
-	}  
+	}
 
     public void registerOnClickListener (OnClickListener listener) {
         mListener = listener;

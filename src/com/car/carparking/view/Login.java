@@ -13,7 +13,6 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,6 +22,7 @@ import android.widget.ImageView.ScaleType;
 import android.content.Intent;
 
 import com.car.carparking.R;
+import com.car.carparking.module.AccountManager;
 
 public class Login extends Activity implements View.OnClickListener{
     /**
@@ -57,7 +57,7 @@ public class Login extends Activity implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        mImageResId = new int[] { R.drawable.a, R.drawable.a,R.drawable.a, R.drawable.a,R.drawable.a};
+        mImageResId = new int[] { R.drawable.a, R.drawable.b,R.drawable.a, R.drawable.b,R.drawable.a};
 
 		mImageViews = new ArrayList<ImageView>();
 
@@ -85,8 +85,6 @@ public class Login extends Activity implements View.OnClickListener{
         mUserText = (EditText)findViewById(R.id.username);
         mPwdText = (EditText)findViewById(R.id.password);
         mTitleView = (TitleView)findViewById(R.id.titleview);
-        mTitleView.setTitle(R.string.app_name); 
-        mTitleView.setMenuVisible(View.GONE);
     }
     private class ScrollTask implements Runnable {
 
@@ -196,9 +194,15 @@ public class Login extends Activity implements View.OnClickListener{
     		if(ret==INVALID_NULL){
     			Toast.makeText(getApplicationContext(), "username and password can't be empty", Toast.LENGTH_LONG).show();
     	    }else if(ret==RET_OK){
-    	    	Intent intent = new Intent();
-                intent.setClassName("com.car.carparking","com.car.carparking.view.CarListView");
-                startActivity(intent); 
+                AccountManager am = AccountManager.getInstance(this);
+                Intent intent = new Intent();
+                if (am.getCurrentAccount().isAdmin()) {
+                    intent.setClassName("com.car.carparking", "com.car.carparking.view.AdminHomeView");
+                }else {
+                    intent.putExtra("location", am.getCurrentAccount().getLocation());
+                    intent.setClassName("com.car.carparking", "com.car.carparking.view.CarListView");
+                }
+                startActivity(intent);
                 Login.this.finish();
     		}else if(ret==INVALID_PWD){
     			Toast.makeText(getApplicationContext(), "Invalid password", Toast.LENGTH_LONG).show();
@@ -213,12 +217,13 @@ public class Login extends Activity implements View.OnClickListener{
         if(user==null || pwd==null || user.equals("")|| pwd.equals("")){
             return INVALID_NULL;
         }
-        int ret = RET_OK;
-        if (user.equals("car") && pwd.equals("1111")) {
+        AccountManager am = AccountManager.getInstance(this);
+        int ret = am.login(user,pwd);;
+        if (ret == AccountManager.LOGIN_SUCCESS) {
             return RET_OK;
-        }else if (!user.equals("car")) {
+        }else if (ret == AccountManager.ERROR_NO_ACCOUNT) {
             return INVALID_USER;
-        }else if(!pwd.equals("1111")) {
+        }else if (ret == AccountManager.ERROR_NAME_PASS_NOTMATCH) {
             return INVALID_PWD;
         }
     	return INVALID_NULL;

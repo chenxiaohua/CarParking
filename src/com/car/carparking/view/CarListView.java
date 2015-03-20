@@ -1,13 +1,11 @@
 package com.car.carparking.view;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import com.car.carparking.R;
-import com.car.carparking.R.id;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -28,6 +26,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.car.carparking.module.AccountManager;
+import com.car.carparking.module.Car;
+import com.car.carparking.module.CarManager;
 
 public class CarListView extends Activity implements View.OnClickListener{
 	private AlertDialog mAlertDialog;
@@ -40,7 +41,8 @@ public class CarListView extends Activity implements View.OnClickListener{
     private ArrayAdapter<String> mCarProvinceArray;
     private String[] mCarProvince;
     private String mCurrentProvince;
-	
+    private String mLocation;
+
 	ListView mItemList;
     ItemListAdapter mItemListAdapter;
     private  ArrayList<Map<String,Object>>  mArrayList=  new ArrayList<Map<String,Object>>();
@@ -68,12 +70,12 @@ public class CarListView extends Activity implements View.OnClickListener{
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
-        case id.action_auto:
+        case R.id.action_auto:
         	Intent intent = new Intent();
         	intent.setClassName("com.car.carparking","com.car.carparking.view.AutoScanCarPlate");
             startActivityForResult(intent, 1);
             break;
-        case id.action_manual:
+        case R.id.action_manual:
         	showAddEdit();
             break;
         }
@@ -81,16 +83,17 @@ public class CarListView extends Activity implements View.OnClickListener{
     }
 
     private void initView(){
-        //Intent intent = getIntent();
         setContentView(R.layout.itemview);
         mItemList = (ListView)findViewById(R.id.listview);
         mCountView = (TextView)findViewById(R.id.listcount);
         mTitleView = (TitleView)findViewById(R.id.title_view);
+        mTitleView.setMenuVisible(View.VISIBLE);
+
         mMenu = (ImageView)mTitleView.findViewById(R.id.menu);
         mMenu.setOnClickListener(this);
-        
+
+        initListData();
         initListView();
-        initListDate();
     }
     
     
@@ -101,23 +104,27 @@ public class CarListView extends Activity implements View.OnClickListener{
                 R.layout.itemlistadapt
                 );
         mItemList.setAdapter(mItemListAdapter);
-        mItemList.setOnItemClickListener(new OnItemClickListener(){
+        Intent intent = getIntent();
+        boolean support_select = intent.getBooleanExtra("support_select", true);
+        if (support_select) {
+            mItemList.setOnItemClickListener(new OnItemClickListener() {
 
-        @Override
-        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-            // TODO Auto-generated method stub
-        	Map<String,Object> map = (Map<String,Object>)mItemListAdapter.getItem(arg2);
-        	Intent intent = new Intent();
-            intent.setClassName("com.car.carparking","com.car.carparking.view.CheckoutView");
-            intent.putExtra("name", map.get("name").toString());
-            intent.putExtra("datetime", map.get("datetime").toString());
-            startActivityForResult(intent, 0);
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    // TODO Auto-generated method stub
+                    Map<String, Object> map = (Map<String, Object>) mItemListAdapter.getItem(arg2);
+                    Intent intent = new Intent();
+                    intent.setClassName("com.car.carparking", "com.car.carparking.view.CheckoutView");
+                    intent.putExtra("name", map.get("name").toString());
+                    intent.putExtra("datetime", map.get("datetime").toString());
+                    startActivityForResult(intent, 0);
+                }
+
+            });
         }
-         
-    });
         mItemListAdapter.notifyDataSetChanged();
-    }  
-    
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 	    if (requestCode == 0) {
 	        if (resultCode == RESULT_OK) {
@@ -126,6 +133,8 @@ public class CarListView extends Activity implements View.OnClickListener{
 	            	if(carname!=null && !carname.equals("")&&mArrayList!=null&&mArrayList.size()>0){
 		            	for(int i=0;i<mArrayList.size();i++){
 		            		if(mArrayList.get(i).get("name").equals(carname)){
+                                Car car = (Car)mArrayList.get(i).get("car");
+                                CarManager.getInstance(this).delCar(car);
 		            			mArrayList.remove(i);
 		            			break;
 		            		}
@@ -142,12 +151,16 @@ public class CarListView extends Activity implements View.OnClickListener{
 	            if(intent!=null){
 	            	String carname = intent.getStringExtra("name");
 	            	if(carname!=null && !carname.equals("")&&mArrayList!=null){
+                        Timestamp ts = new Timestamp(System.currentTimeMillis());
 	            		Map map = new HashMap<String, Object>();
                         map.put("name", carname);
-                        map.put("datetime", mDateFormat.format(System.currentTimeMillis()));
+                        map.put("datetime", mDateFormat.format(ts.getTime()));
+                        Car car = new Car(0,carname,ts,mLocation);
+                        map.put("car", car);
                         mArrayList.add(map);
 		            	mItemListAdapter.notifyDataSetChanged();
 		            	mCountView.setText(""+ mArrayList.size());
+                        CarManager.getInstance(this).addCar(car);
 	            	}
 	            }
 	        } else if (resultCode == RESULT_CANCELED) {
@@ -156,15 +169,24 @@ public class CarListView extends Activity implements View.OnClickListener{
 	    }
 	}
 
-    private void initListDate(){         
-    	String str = mDateFormat.format(System.currentTimeMillis()); 
+    private void initListData(){
     	mArrayList.clear();
-//        for(int i=0;i< 5;i++){
-//        	Map map = new HashMap<String, Object>();
-//            map.put("name", "À’FMG888");
-//            map.put("datetime", str);
-//            mArrayList.add(map);
-//        }
+        Intent intent = getIntent();
+        mLocation = intent.getStringExtra("location");
+        List<Car> cars = CarManager.getInstance(this).getAllCars(mLocation);
+        Log.d("dongbin", "get car number" + cars.size());
+        if (cars != null) {
+            Iterator<Car> iter = cars.iterator();
+            while(iter.hasNext()) {
+                Car car = iter.next();
+                Log.d("dongbin", car.getId() + " " + car.getPlate());
+                Map map = new HashMap<String, Object>();
+                map.put("name", car.getPlate());
+                map.put("datetime", mDateFormat.format(car.getParktime()));
+                map.put("car",car);
+                mArrayList.add(map);
+            }
+        }
         if(mCountView!=null){
         	mCountView.setText(""+ mArrayList.size());
         }
@@ -190,12 +212,17 @@ public class CarListView extends Activity implements View.OnClickListener{
 	                                     public void onClick(DialogInterface dialog, int which) {
 	                                    	 String add = mAddressEditText.getText().toString();
 	                                    	 if(add!=null&&!add.equals("")&&add.length()==6){
-	                                         	Map map = new HashMap<String, Object>();
-	                                            map.put("name", mSpinner.getSelectedItem() + add);
-	                                            map.put("datetime", mDateFormat.format(System.currentTimeMillis()));
-	                                            mArrayList.add(map);
-	                                            mItemListAdapter.notifyDataSetChanged();
-	                                            mCountView.setText(""+ mArrayList.size());
+                                                 Map map = new HashMap<String, Object>();
+                                                 String carplate = mSpinner.getSelectedItem() + add ;
+                                                 map.put("name", carplate);
+                                                 Timestamp ts = new Timestamp(System.currentTimeMillis());
+                                                 map.put("datetime", mDateFormat.format(ts));
+                                                 Car car = new Car(0, carplate,ts, mLocation);
+                                                 map.put("car", car);
+                                                 mArrayList.add(map);
+                                                 mItemListAdapter.notifyDataSetChanged();
+                                                 mCountView.setText(""+ mArrayList.size());
+                                                 CarManager.getInstance(CarListView.this).addCar(car);
 	                                    	 }
 	                     	                 mAlertDialog.dismiss();
 	                                     }  

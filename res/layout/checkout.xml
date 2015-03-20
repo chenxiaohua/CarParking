@@ -6,13 +6,21 @@
   android:orientation="vertical"
   android:background="#ffffffff"
   >
-     
+
+    <view
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            class="com.car.carparking.view.TitleView"
+            android:id="@+id/view"
+            android:layout_gravity="center_horizontal"/>
+
     <LinearLayout
     	android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal"
     	android:background="#ffffffff"
-    >
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 		<TextView
 	    	android:layout_width="120dip"
 	   	 	android:layout_height="wrap_content"
@@ -20,7 +28,7 @@
 	    	android:paddingRight="10dip"
 	    	android:gravity="center_vertical|left"
 	    	android:textStyle="bold"
-	    	android:textColor="#ff000000"
+	    	android:textColor="@color/text"
 	    	android:text="@string/list_name"
 	    	android:textSize="22sp" />
 		<TextView
@@ -38,17 +46,18 @@
     	android:layout_height="wrap_content"
     	android:orientation="horizontal"
     	android:background="#ffffffff"
-    >
+        android:layout_marginBottom="20dp">
 		<TextView
 	    	android:layout_width="120dip"
 	    	android:layout_height="wrap_content"
 	    	android:paddingLeft="10dip"
 	    	android:paddingRight="10dip"
 	    	android:gravity="center_vertical|left"
-	    	android:textColor="#ff000000"
+	    	android:textColor="@color/text"
 	   	 	android:textStyle="bold"
 	    	android:text="@string/list_datetime"
-	    	android:textSize="22sp" />
+	    	android:textSize="22sp"
+                />
 		<TextView
 		    android:id="@+id/datetime"
 	    	android:layout_width="wrap_content"
@@ -64,17 +73,18 @@
     	android:layout_height="wrap_content"
     	android:orientation="horizontal"
     	android:background="#ffffffff"
-    >
+        android:layout_marginBottom="20dp">
 		<TextView
 	    	android:layout_width="120dip"
 	    	android:layout_height="wrap_content"
 	    	android:paddingLeft="10dip"
 	    	android:paddingRight="10dip"
 	    	android:gravity="center_vertical|left"
-	    	android:textColor="#ff000000"
+	    	android:textColor="@color/text"
 	   	 	android:textStyle="bold"
 	    	android:text="@string/endtime"
-	    	android:textSize="22sp" />
+	    	android:textSize="22sp"
+                />
 		<TextView
 		    android:id="@+id/endtime"
 	    	android:layout_width="wrap_content"
@@ -90,14 +100,14 @@
     	android:layout_height="wrap_content"
     	android:orientation="horizontal"
     	android:background="#ffffffff"
-    >
+        android:layout_marginBottom="20dp">
 		<TextView
 	    	android:layout_width="120dip"
 	    	android:layout_height="wrap_content"
 	    	android:paddingLeft="10dip"
 	    	android:paddingRight="10dip"
 	    	android:gravity="center_vertical|left"
-	    	android:textColor="#ff000000"
+	    	android:textColor="@color/text"
 	   	 	android:textStyle="bold"
 	    	android:text="@string/price_standard"
 	    	android:textSize="22sp" />
@@ -127,14 +137,14 @@
     	android:layout_height="wrap_content"
     	android:orientation="horizontal"
     	android:background="#ffffffff"
-    >
+        android:layout_marginBottom="10dp">
 		<TextView
 	    	android:layout_width="120dip"
 	    	android:layout_height="wrap_content"
 	    	android:paddingLeft="10dip"
 	    	android:paddingRight="10dip"
 	    	android:gravity="center_vertical|left"
-	    	android:textColor="#ff000000"
+	    	android:textColor="@color/text"
 	   	 	android:textStyle="bold"
 	    	android:text="@string/price_total"
 	    	android:textSize="22sp" />
@@ -163,11 +173,10 @@
 	    	android:layout_marginTop="10dip"
 	    	android:layout_marginBottom="10dip"
 	    	android:gravity="center_vertical|center_horizontal"
-	    	android:textColor="#ff000000"
-	   	 	android:textStyle="bold"
-	    	android:text="@string/checkout"
-	    	android:background="#ffc7102d"
-	    	android:textSize="24sp" />
+	    	android:textColor="@color/color_white"
+            android:text="@string/checkout"
+	    	android:background="@drawable/buttonlarge"
+	    	android:textSize="20sp" />
     </LinearLayout>
     
 </LinearLayout>
